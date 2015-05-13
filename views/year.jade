@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/stylesheets/header.css")
+  body
+    include header.jade
+    ul
+      li
+        a(href="/#{route}/2011") 2011
+      li
+        a(href="/#{route}/2012") 2012
+      li
+        a(href="/#{route}/2013") 2013

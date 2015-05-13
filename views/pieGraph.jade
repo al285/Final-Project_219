@@ -1,0 +1,75 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/stylesheets/header.css")
+    style.
+      body {
+        font: 10px sans-serif;
+        text-align: center;
+      }
+      
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+        border-style: solid;
+        border-width: 2px;
+      }
+      
+      .x.axis path {
+        display: none;
+      }
+      
+      .line {
+        fill: none;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+      }
+  body
+    include header.jade
+    p
+    script(src='http://d3js.org/d3.v3.js')
+    script.
+      var w = 600,                        //width
+      h = 600,                            //height
+      r = 200,                            //radius
+      color = d3.scale.category20()
+              .domain([3, 4]);
+  
+      data = [{"label":"Female #{percent.female}", "value": #{rec.female}}, 
+              {"label":"Male #{percent.male}", "value": #{rec.male}}]
+      
+      var vis = d3.select("body")
+          .append("svg:svg")              
+          .data([data])                   
+              .attr("width", w)           
+              .attr("height", h)
+          .append("svg:g")                
+              .attr("transform", "translate(" + r + "," + r + ")")    
+  
+      var arc = d3.svg.arc()              
+          .outerRadius(r);
+  
+      var pie = d3.layout.pie()           
+          .value(function(d) { return d.value; });    
+  
+      var arcs = vis.selectAll("g.slice")     
+          .data(pie)                          
+          .enter()                            
+              .append("svg:g")                
+                  .attr("class", "slice");    
+  
+          arcs.append("svg:path")
+                  .attr("fill", function(d, i) { return color(i); } ) 
+                  .attr("d", arc);                                    
+  
+          arcs.append("svg:text")                                     
+                  .attr("transform", function(d) {                    
+                  d.innerRadius = 0;
+                  d.outerRadius = r;
+                  return "translate(" + arc.centroid(d) + ")";        
+              })
+              .attr("text-anchor", "middle")                          
+              .text(function(d, i) { return data[i].label; });        

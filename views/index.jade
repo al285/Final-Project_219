@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="stylesheets/header.css")
+  body
+    include header.jade
+    block content
+      p Welcome to the final project for IS219 by Erick Allas and Atika Latif! The details of the project are as followed:
+      
+      ul For your final project, you are to create three graphs using D3 (http://d3js.org/) that use data from IPEDS to answer 3 questions about colleges.  You can use this chart library that is based on D3 too: http://c3js.org/ or find / write your own.
+      ul
+        ol
+            li A bar graph showing the top 10 colleges by enrollment.   
+            li A pie graph that shows the gender distribution of a college that you select
+            li A line graph that shows the change in tuition over 3 years for a college that you select.
+        ol
+        
+      ul Your project should be based on project 1, so you will need to modify project 1 to import additional data from the IPEDS data files. 

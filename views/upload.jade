@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title= title
+    script(src="/javascripts/form_validation.js")
+  body
+  center
+  
+    p Please upload #{fileName} or #{fileName.substring(0, fileName.length - 4)}_rev.csv
+    form(name="fileForm", action="/fileupload/#{route}", method="post", enctype="multipart/form-data", onsubmit="return validateForm('#{fileName}');")
+      input(type="file", name="file")
+      input(type="submit", value="Upload")     
+    p 
+        a.random(href="/") HOME
