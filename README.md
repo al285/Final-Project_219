@@ -1,3 +1,6 @@
+Atika Latif and Erick Allas
+
+
 Project 2
 
 For your final project, you are to create three graphs using D3 (http://d3js.org/) that use data from IPEDS to answer 3 questions about colleges.  You can use this chart library that is based on D3 too: http://c3js.org/ or find / write your own. 
